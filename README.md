@@ -66,21 +66,21 @@ OpenClaw 支持标准 Agent Skill 格式，把整个 `youdie-caishui-skill/` 目
 
 ### 🤝 WorkBuddy
 
-WorkBuddy 支持通过知识库（Knowledge Base）方式接入：
+在 WorkBuddy 的**技能界面**直接安装，两种方式任选其一：
 
-1. 在 WorkBuddy 中创建一个新的 Knowledge Space，命名为"友蝶财税"
-2. 上传 `SKILL.md` 作为入口提示，`references/` 和 `assets/` 下的全部 Markdown 文件作为挂载资源
-3. 在需要友蝶业务产出时，将该 Knowledge Space 绑定到对应 Agent
-4. WorkBuddy 会按 `SKILL.md` 中的"使用指引"流程自动调用对应的 reference
+1. **本地上传**：下载本仓库的 [`youdie-caishui-skill.zip`](./youdie-caishui-skill.zip)，在技能界面点 **上传 zip** 即可
+2. **仓库导入**：在技能界面选"从 GitHub 导入"，粘贴本仓库地址 `https://github.com/neilhexiaoning-alt/youdie-caishui-skill`
+
+安装完成后，在对话中提到"友蝶"等关键词自动触发。
 
 ### 🐵 悟空
 
-悟空（Wukong）平台接入方式：
+在悟空的**技能界面**直接安装，两种方式任选其一：
 
-1. 把 `SKILL.md` 的内容作为 **Agent 系统提示词（System Prompt）** 或"技能包"上传
-2. 把 `references/*.md` 和 `assets/*.md` 作为**关联知识文档**导入到同一个 Agent 空间
-3. 在悟空的 Agent 设置里开启"按需加载文档"能力
-4. 对话中提到友蝶相关任务时，悟空会按 `SKILL.md` 的指引加载对应文件
+1. **本地上传**：下载本仓库的 [`youdie-caishui-skill.zip`](./youdie-caishui-skill.zip)，在技能界面点 **上传 zip** 即可
+2. **仓库导入**：在技能界面选"从 GitHub 导入"，粘贴本仓库地址 `https://github.com/neilhexiaoning-alt/youdie-caishui-skill`
+
+安装完成后，在对话中提到"友蝶"等关键词自动触发。
 
 ### 🤖 Claude Code / Cowork
 
@@ -103,13 +103,13 @@ python -m scripts.package_skill youdie-caishui-skill/
 
 ### 📋 平台对照表
 
-| 平台 | 接入方式 | 支持按需加载 | 备注 |
+| 平台 | 接入方式 | 操作难度 | 备注 |
 |------|---------|:---:|------|
-| **OpenClaw** | skills 目录 | ✅ | 原生 Agent Skill 支持 |
-| **WorkBuddy** | Knowledge Space | ✅ | 通过知识库机制挂载 |
-| **悟空** | System Prompt + 文档 | ✅ | 开启按需加载能力 |
-| Claude Code / Cowork | skills 目录 | ✅ | 官方标准方式 |
-| Claude.ai Projects | System Instructions + Knowledge | ⚠️ 全量加载 | 无目录结构 |
+| **OpenClaw** | skills 目录放置 | ⭐ | 原生 Agent Skill 支持 |
+| **WorkBuddy** | 技能界面 · 上传 zip 或 GitHub 导入 | ⭐ | 图形化一键安装 |
+| **悟空** | 技能界面 · 上传 zip 或 GitHub 导入 | ⭐ | 图形化一键安装 |
+| Claude Code / Cowork | skills 目录放置 | ⭐ | 官方标准方式 |
+| Claude.ai Projects | System Instructions + Knowledge | ⭐⭐ | 需手动粘贴 |
 
 ## 使用示例
 
