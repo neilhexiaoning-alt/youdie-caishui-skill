@@ -1,0 +1,49 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Python (如果后续有 Python 脚本)
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Node (如果后续有工具脚本)
+node_modules/
+package-lock.json
+
+# 构建产物 / 临时文件
+*.log
+*.tmp
+temp/
+dist/
+build/
+
+# 打包的 skill 文件（需要时再手动生成）
+*.skill
+
+# 本地笔记 / 私有草稿
+NOTES.md
+TODO.md
+.drafts/

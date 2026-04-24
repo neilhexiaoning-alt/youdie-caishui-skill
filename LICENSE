@@ -1,0 +1,50 @@
+MIT License
+
+Copyright (c) 2026 昆明友蝶财务咨询服务有限公司 (Kunming Youdie Financial Consulting Service Co., Ltd.)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 额外声明 (Additional Notice)
+
+本项目的代码结构、文档框架遵循 MIT 协议开放使用。但以下内容为昆明友蝶财务咨询服务有限公司专有，**不授权第三方在商业推广场景中直接使用**：
+
+1. "友蝶财税"品牌名称及相关商标
+2. 友蝶财税的企业资质信息（协会会员资质、AAA 级诚信经营示范单位、云南省数字化财税服务示范单位等）
+3. 友蝶财税的核心承诺原文："凡是友蝶财务导致的税务罚款，我们全额承担"
+4. 友蝶财税的企业文化表述（使命、愿景、价值观原文）
+5. 友蝶财税的客户案例与服务数据
+
+如您希望学习本 skill 的结构、用于自己公司的类似 skill 开发，欢迎 Fork 后替换为您自己公司的品牌信息。
+
+The code structure and document framework of this project are licensed under
+the MIT License. However, the following content is proprietary to Kunming Youdie
+Financial Consulting Service Co., Ltd. and is NOT licensed for commercial use
+by third parties:
+
+1. The "Youdie" (友蝶) brand name and associated trademarks
+2. Qualifications and certifications of Youdie Financial Services
+3. The official commitment statement of Youdie Financial Services
+4. The corporate culture statements (mission, vision, values) of Youdie
+5. Client cases and service data of Youdie
+
+If you wish to learn from the structure of this skill and develop a similar
+skill for your own company, please fork this repository and replace the brand
+information with your own.
