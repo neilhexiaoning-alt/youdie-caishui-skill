@@ -1,19 +1,24 @@
 # youdie-caishui-skill
 
-> 友蝶财税业务专用 Claude Skill —— 品牌知识库、服务口径、文案规范一键调用。
+> 友蝶财税业务专用 Agent Skill —— 品牌知识库、服务口径、文案规范一键调用。
+> 兼容 **OpenClaw**、**WorkBuddy**、**悟空** 以及 Claude Code / Cowork 等主流 AI Agent 平台。
 
 [![Skill Version](https://img.shields.io/badge/skill-v1.0.0-gold)](./SKILL.md)
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![Language](https://img.shields.io/badge/language-中文-red)](./README.md)
+[![Compatible](https://img.shields.io/badge/compatible-OpenClaw%20%7C%20WorkBuddy%20%7C%20悟空-brightgreen)](#安装与使用)
 
 ## 项目简介
 
-这是一个为**昆明友蝶财务咨询服务有限公司**（以及大理友蝶财税服务有限公司）打造的 Claude Agent Skill。它把友蝶财税的品牌信息、服务体系、资质荣誉、文案规范等内容沉淀成结构化的知识库，让 Claude 在处理友蝶相关任务时能够：
+这是一个为**昆明友蝶财务咨询服务有限公司**（以及大理友蝶财税服务有限公司）打造的 **Agent Skill**。它把友蝶财税的品牌信息、服务体系、资质荣誉、文案规范等内容沉淀成结构化的知识库。
+
+本 skill 基于通用的 **Markdown + frontmatter** 开放格式，可以被 **OpenClaw、WorkBuddy、悟空** 以及 Claude Code、Cowork、Claude.ai Projects 等任何支持 Agent Skill 规范的平台直接加载和调用，让各类 AI 助手在处理友蝶相关任务时能够：
 
 - ✅ 保持**品牌口径一致**——使命、愿景、承诺、服务名称不跑偏
 - ✅ 遵守**合规底线**——不做超能力承诺、不违反广告法
 - ✅ 适配**多种场景**——从朋友圈短文案到商务提案全覆盖
 - ✅ 复用**标准模板**——介绍 PPT、合作提案、客户问答开箱即用
+- ✅ 跨**多 Agent 平台**——一处维护，多处调用
 
 ## 适用场景
 
@@ -29,7 +34,7 @@
 
 ```
 youdie-caishui-skill/
-├── SKILL.md                          # 技能主入口（Claude 首先读这个）
+├── SKILL.md                          # 技能主入口（AI 助手首先读这个）
 ├── README.md                         # 本文件（GitHub 展示用）
 ├── LICENSE                           # MIT 开源协议
 ├── references/                       # 详细知识库（按需加载）
@@ -46,39 +51,76 @@ youdie-caishui-skill/
 
 ## 安装与使用
 
-### 方式一：Claude Code / Cowork（推荐）
+> **通用步骤**：所有平台第一步都是把本仓库下载到本地。
+>
+> ```bash
+> git clone https://github.com/neilhexiaoning-alt/youdie-caishui-skill.git
+> ```
 
-1. 下载本仓库到本地：
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/youdie-caishui-skill.git
-   ```
+### 🐉 OpenClaw
 
-2. 把整个目录放到 Claude 的 skills 路径下（具体路径参考您使用的 Claude 产品文档）
+OpenClaw 支持标准 Agent Skill 格式，把整个 `youdie-caishui-skill/` 目录放到 OpenClaw 的 skills 加载路径（通常是 `~/.openclaw/skills/` 或工作区内的 `.openclaw/skills/`），重启即可。触发方式：
 
-3. 在对话中触发，Claude 会自动加载 `SKILL.md` 和相关 reference
+- 在对话中提及"友蝶""友蝶财税""kmudee"等关键词
+- 或使用 `/skill youdie-caishui` 显式加载
 
-### 方式二：直接复制内容
+### 🤝 WorkBuddy
 
-如果您使用的是 Claude.ai 网页版：
-1. 打开 `SKILL.md`，复制全部内容
-2. 作为 System Prompt 或 Project 知识库上传
-3. 对话时引用此 skill
+WorkBuddy 支持通过知识库（Knowledge Base）方式接入：
 
-### 方式三：打包为 .skill 文件
+1. 在 WorkBuddy 中创建一个新的 Knowledge Space，命名为"友蝶财税"
+2. 上传 `SKILL.md` 作为入口提示，`references/` 和 `assets/` 下的全部 Markdown 文件作为挂载资源
+3. 在需要友蝶业务产出时，将该 Knowledge Space 绑定到对应 Agent
+4. WorkBuddy 会按 `SKILL.md` 中的"使用指引"流程自动调用对应的 reference
 
-使用 skill-creator 工具打包：
+### 🐵 悟空
+
+悟空（Wukong）平台接入方式：
+
+1. 把 `SKILL.md` 的内容作为 **Agent 系统提示词（System Prompt）** 或"技能包"上传
+2. 把 `references/*.md` 和 `assets/*.md` 作为**关联知识文档**导入到同一个 Agent 空间
+3. 在悟空的 Agent 设置里开启"按需加载文档"能力
+4. 对话中提到友蝶相关任务时，悟空会按 `SKILL.md` 的指引加载对应文件
+
+### 🤖 Claude Code / Cowork
+
+1. 把整个目录放到 Claude 的 skills 路径下（`~/.claude/skills/` 或项目级的 `.claude/skills/`）
+2. 在对话中触发，Claude 会自动加载 `SKILL.md` 和相关 reference
+
+### 💬 Claude.ai 网页版 / Projects
+
+1. 打开 `SKILL.md`，复制全部内容作为 Project 的 System Instructions
+2. 把 `references/` 和 `assets/` 下的 Markdown 文件作为 Project Knowledge 上传
+3. 对话时直接描述任务，Claude 自动按 skill 规则产出
+
+### 📦 打包为 .skill 文件
+
+使用 skill-creator 工具打包，方便分发：
+
 ```bash
 python -m scripts.package_skill youdie-caishui-skill/
 ```
 
+### 📋 平台对照表
+
+| 平台 | 接入方式 | 支持按需加载 | 备注 |
+|------|---------|:---:|------|
+| **OpenClaw** | skills 目录 | ✅ | 原生 Agent Skill 支持 |
+| **WorkBuddy** | Knowledge Space | ✅ | 通过知识库机制挂载 |
+| **悟空** | System Prompt + 文档 | ✅ | 开启按需加载能力 |
+| Claude Code / Cowork | skills 目录 | ✅ | 官方标准方式 |
+| Claude.ai Projects | System Instructions + Knowledge | ⚠️ 全量加载 | 无目录结构 |
+
 ## 使用示例
+
+> 下列示例适用于所有支持的平台（OpenClaw / WorkBuddy / 悟空 / Claude 等），以下统称"AI 助手"。
 
 ### 示例 1：生成朋友圈文案
 
-**你问 Claude**：
+**你问 AI 助手**：
 > 帮我写一条朋友圈文案，主题是年底汇算清缴。
 
-**Claude 会**：
+**AI 助手会**：
 1. 读取 `SKILL.md` 了解上下文
 2. 加载 `brand-voice.md` 掌握文案调性
 3. 参考 `wechat-post-templates.md` 的"汇算清缴季"模板
@@ -89,7 +131,7 @@ python -m scripts.package_skill youdie-caishui-skill/
 **客户问**：
 > 你们代账一个月多少钱？
 
-**Claude 会**：
+**AI 助手会**：
 1. 读取 `faq.md` 中的 Q5 标准回复
 2. 根据 `brand-voice.md` 用"先共情、后引导"的话术
 3. 给出不直接报价、引导加微信细聊的回复
@@ -99,13 +141,13 @@ python -m scripts.package_skill youdie-caishui-skill/
 **你说**：
 > 帮我给昆明某商会写一份会员增值服务合作提案。
 
-**Claude 会**：
+**AI 助手会**：
 1. 读取 `proposal-outline.md` 的"针对商会 / 协会"章节
 2. 调用 `company-profile.md` + `credentials.md` 填充资质背书
 3. 用 `services.md` 的规范服务名称列出增值内容
 4. 按标准结构输出提案初稿
 
-## 核心原则（Claude 在使用此 skill 时会自动遵守）
+## 核心原则（AI 助手在使用此 skill 时会自动遵守）
 
 ### ✅ 必须做到
 - 使用**规范品牌名**（友蝶财税、昆明友蝶财务咨询服务有限公司）
@@ -145,6 +187,11 @@ python -m scripts.package_skill youdie-caishui-skill/
 
 ## 变更日志
 
+### v1.1.0（2026-04-24）
+- 🔌 新增对 **OpenClaw、WorkBuddy、悟空** 三个 Agent 平台的接入说明
+- 📋 新增平台对照表，明确各平台的加载方式与能力差异
+- 📝 使用示例与核心原则改为"AI 助手"通用表述
+
 ### v1.0.0（2026-04-24）
 - 🎉 初始版本发布
 - 包含完整的品牌档案、24 项服务清单、资质荣誉、品牌调性、FAQ
@@ -162,13 +209,16 @@ python -m scripts.package_skill youdie-caishui-skill/
 - **官网**：[www.kmudee.com](https://www.kmudee.com)
 - **商务合作**：通过官网联系我们
 
-## 关于 Claude Skill
+## 关于 Agent Skill
 
-Claude Skill 是 Anthropic 推出的 Agent 能力扩展机制。通过 `SKILL.md` + 结构化资源文件，让 Claude 在特定领域内按"领域专家"的方式工作。了解更多：
+Agent Skill 是一种通用的 AI Agent 能力扩展机制——通过 `SKILL.md`（主入口，含 frontmatter 元数据）+ `references/` 知识库 + `assets/` 模板，让 AI 助手在特定领域内按"领域专家"的方式工作。
 
-- [Anthropic 官方文档](https://docs.claude.com)
+该格式最初由 Anthropic 在 Claude Skill 中提出，现已被 **OpenClaw、WorkBuddy、悟空** 等国内主流 Agent 平台采用或兼容。
+
+相关资源：
+- [Anthropic Claude 官方文档](https://docs.claude.com)
 - [Claude Code](https://claude.com/claude-code)
 
 ---
 
-**Made with 💛 by 友蝶财税 & Claude**
+**Made with 💛 by 友蝶财税 · 适配多 Agent 平台**
